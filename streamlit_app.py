@@ -47,3 +47,4 @@ streamlit.dataframe(my_data_rows)
 # Allow the end user to add a fruit to the list 
 add_my_fruits = streamlit.text_input('What fruit would you like information about?','Kiwi', key =2)
 streamlit.write('Thanks for adding ', add_my_fruits)
+my_cur.execute("insert into pc_rivery_db.public.fruit_load_list values ('from streamlit')")
