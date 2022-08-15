@@ -53,6 +53,13 @@ def insert_row_snowflake(new_fruit):
     with my_cnx.cursor() as my_cur:
         my_cur.execute("insert into pc_rivery_db.public.fruit_load_list values ('" + new_fruit +"')")
         return "Thanks for adding " +  new_fruit    
+
+# Add a button to put files in internal stage
+if streamlit.button('put put put'): 
+    my_cnx = snowflake.connector.connect(**streamlit.secrets["snowflake"])
+    with my_cnx.cursor() as my_cur:
+        my_cur.execute(f"put file://C:\Users\holzscsa\my_file.txt @my_internal_named_stage")
+    my_cnx.close()    
     
 streamlit.header('View Our Fruit List - Add Your Favorites!')
     
