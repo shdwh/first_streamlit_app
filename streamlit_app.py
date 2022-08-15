@@ -56,9 +56,10 @@ def insert_row_snowflake(new_fruit):
 
 # Add a button to put files in internal stage
 if streamlit.button('put put put'): 
+    f = open("C:\Users\holzscsa\my_file.txt")
     my_cnx = snowflake.connector.connect(**streamlit.secrets["snowflake"])
     with my_cnx.cursor() as my_cur:
-        my_cur.execute("put file://my_file.txt @demo_db.public.my_internal_named_stage")
+        my_cur.execute("put file://my_file.txt @demo_db.public.my_internal_named_stage",file_stream=f)
     my_cnx.close()    
     
 streamlit.header('View Our Fruit List - Add Your Favorites!')
